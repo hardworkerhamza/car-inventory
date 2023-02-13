@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Task</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row mb-2">
+		<div class="col-md-12 text-center bg-primary text-white">
+			<h1>Runtime filter</h1>
+		</div>
+	</div>
+	<form name="selection" class="row">
+		<div class="col-md-12">
+			<ul class="list-group">
+				<li class="list-group-item  text-center">
+					<h3>Select Supplier</h3>
+				</li>
+				<li class="list-group-item">
+					<label>Supplier One <input type="radio" name="supplier" value="Supplier One"></label>
+				</li>
+				<li class="list-group-item">
+					<label>Supplier Two <input type="radio" name="supplier" value="Supplier Two"></label>
+				</li>
+				<li class="list-group-item">
+					<label>Supplier Three <input type="radio" name="supplier" value="Supplier Three"></label>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-12" style="display:none">
+			<ul class="list-group">
+				<li class="list-group-item  text-center">
+					<h3>Select Whole Seller</h3>
+				</li>
+				<li class="list-group-item">
+					<label>Whole Seller One <input type="radio" name="wholeseller" value="Whole Seller One"></label>
+				</li>
+				<li class="list-group-item">
+					<label>Whole Seller Two <input type="radio" name="wholeseller" value="Whole Seller Two"></label>
+				</li>
+				<li class="list-group-item">
+					<label>Whole Seller Three <input type="radio" name="wholeseller" value="Whole Seller Three"></label>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-12" style="display:none">
+			<ul class="list-group">
+				<li class="list-group-item  text-center">
+					<h3>Select Driven Side</h3>
+				</li>
+				<li class="list-group-item">
+					<label>Left Hand Driven (LHD) <input type="radio" name="drive_side" value="LHD"></label>
+				</li>
+				<li class="list-group-item">
+					<label>Right Hand Driven (RHD) <input type="radio" name="drive_side" value="RHD"></label>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-12" style="display:none">
+			<ul class="list-group">
+				<li class="list-group-item  text-center">
+					<h3>Select Model</h3>
+				</li>
+				<li class="list-group-item">
+					<label>Model One <input type="radio" name="model" value="Model One"></label>
+				</li>
+				<li class="list-group-item">
+					<label>Model Two <input type="radio" name="model" value="Model Two"></label>
+				</li>
+				<li class="list-group-item">
+					<label>Model Three <input type="radio" name="model" value="Model Three"></label>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-12" style="display:none">
+			<ul class="list-group">
+				<li class="list-group-item  text-center">
+					<h3>Select SFX</h3>
+				</li>
+				<li class="list-group-item">
+					<label>A1 <input type="radio" name="sfx" value="A1"></label>
+				</li>
+				<li class="list-group-item">
+					<label>B1 <input type="radio" name="sfx" value="B1"></label>
+				</li>
+				<li class="list-group-item">
+					<label>C1 <input type="radio" name="sfx" value="C1"></label>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-12" style="display:none">
+			<ul class="list-group">
+				<li class="list-group-item  text-center">
+					<h3>Select Variant</h3>
+				</li>
+				<li class="list-group-item">
+					<label>SomeCar_1 <input type="radio" name="variant" value="SomeCar_1"></label>
+				</li>
+				<li class="list-group-item">
+					<label>SomeCar_2 <input type="radio" name="variant" value="SomeCar_2"></label>
+				</li>
+				<li class="list-group-item">
+					<label>SomeCar_3 <input type="radio" name="variant" value="SomeCar_3"></label>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-12" style="display:none">
+			<ul class="list-group">
+				<li class="list-group-item  text-center">
+					<h3>Select Color</h3>
+				</li>
+				<li class="list-group-item">
+					<label>Black <input type="radio" name="color" value="Black"/></label>
+				</li>
+				<li class="list-group-item">
+					<label>White <input type="radio" name="color" value="White"/></label>
+				</li>
+				<li class="list-group-item">
+					<label>Blue <input type="radio" name="color" value="Blue"/></label>
+				</li>
+			</ul>
+		</div>
+	</form>
+	<form class="row" style="display:none" name="qauntity">
+		<div class="col-md-12">
+			<table class="table table-bordered" id="qty-form">
+				
+			</table>
+			<button class="btn btn-success btn-block my-2">Save</button>
+			<div class="alert alert-success" id="alert" style="display:none">
+				Record Saved
+			</div>
+		</div>
+	</form>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		$('input[type=radio]').on('click',function(e)
+		{
+			$(this).parent().parent().parent().parent().slideUp('slow');
+			if($(this).parent().parent().parent().parent().next('div').length)
+			{
+				$(this).parent().parent().parent().parent().next().slideDown('slow');
+			}
+			else
+			{
+				$(this).parent().parent().parent().parent().parent().next().slideDown('slow');
+				$.ajax({
+					url : 'fetch_qty_form.php',
+					method : 'POST',
+					data : $('form[name=selection]').serialize(),
+					success:function(data)
+					{
+						data = $.parseJSON(data);
+						$('#qty-form').html(data.html)
+					},
+					error:function()
+					{
+
+					}
+				})
+			}
+		})
+
+		$('form[name=qauntity]').on('submit',function(e)
+		{
+			$('#alert').slideUp('700');
+			e.preventDefault();
+			$.ajax({
+				url : 'save_inv.php',
+				method : 'POST',
+				data : $('form[name=qauntity]').serialize(),
+				success:function(data)
+				{
+					$('#alert').slideDown('700');
+				},
+				error:function()
+				{
+
+				}
+			})
+		})
+	})
+</script>
+<style type="text/css">
+	th
+	{
+		font-size: 14px;
+	}
+</style>
